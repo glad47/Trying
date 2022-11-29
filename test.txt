@@ -1,0 +1,1 @@
+javassist.CtNewClass@369f73a2[hasConstructor changed frozen public class Hello2 fields= constructors=javassist.CtConstructor@7d907bac[public Hello2 ()V],  methods=javassist.CtMethod@26562bc2[public getName ()Ljava/lang/String;], ]
