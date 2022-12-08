@@ -9,13 +9,13 @@ import com.example.trying.Constant.ReferenceOptions;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ManyToMany {
-	String id() default "";
-	String mapBy() default "";
-	String joinTableName() default "";
+public @interface ForignerKey {
+	String name() default "";
+	Class<?> referencedClass();
 	String referencedColumn() default "";
-	String chosenColumn() default "";
-	String forignerName() default "";
 	ReferenceOptions onUpdate() default ReferenceOptions.NO_ACT;
 	ReferenceOptions onDelete() default ReferenceOptions.NO_ACT;
+
 }
+
+

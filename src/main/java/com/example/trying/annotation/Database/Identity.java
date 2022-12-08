@@ -7,10 +7,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Column {
-	String name() default "";
-	int size() default 0;
-	int afterDecimal () default 2;
-	
-
+public @interface Identity {
+	int startingValue();
+	int incrementValue();
 }
