@@ -46,7 +46,8 @@ public class Student {
 	@ForignerKey(referencedClass=Teacher.class, onUpdate=ReferenceOptions.CASCADE)
 	private long teacher_id;
 	
-	
+	@ForignerKey(referencedClass=Course.class, onUpdate=ReferenceOptions.CASCADE)
+	private int course_id;
 	
 //	@ForignerKey(referencedClass=Course.class, referencedColumn="id", onUpdate=ReferenceOptions.CASCADE, onDelete=ReferenceOptions.RESTRICT)
 //	private Integer courseId;

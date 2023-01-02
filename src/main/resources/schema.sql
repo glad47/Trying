@@ -7,12 +7,6 @@ courseId INTEGER(20),
 courseNAmes VARCHAR(500),
 PRIMARY KEY(courseId)
 );
-Create Table teacher
-(
-id BIGINT(8) Unsigned AUTO_INCREMENT,
-name VARCHAR(500),
-PRIMARY KEY(id)
-);
 Create Table Student
 (
 id INTEGER(10) Unsigned AUTO_INCREMENT,
@@ -21,9 +15,20 @@ date_of_brith DATE NOT NULL UNIQUE,
 update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 image BLOB,
 teacher_id BIGINT(8) Unsigned,
-CONSTRAINT fk_Student_teacher_teacher_id
-	FOREIGN KEY Student(teacher_id) REFERENCES teacher(id) ON UPDATE CASCADE ON DELETE NO ACTION,
+course_id INTEGER(20),
+
+CONSTRAINT fk_Student_course_course_id
+	FOREIGN KEY Student(course_id) REFERENCES course(courseId) ON UPDATE CASCADE ON DELETE NO ACTION,
 PRIMARY KEY(id,StudentName)
+);
+Create Table teacher
+(
+id BIGINT(8) Unsigned AUTO_INCREMENT,
+name VARCHAR(500),
+student_id INTEGER(10) Unsigned,
+CONSTRAINT fk_teacher_Student_student_id
+	FOREIGN KEY teacher(student_id) REFERENCES Student(id) ON UPDATE CASCADE ON DELETE NO ACTION,
+PRIMARY KEY(id)
 );
 Create Table rating
 (
@@ -78,3 +83,5 @@ CONSTRAINT fk_2_student_teacher
 	FOREIGN KEY (teacher_id) REFERENCES teacher(id) ON UPDATE NO ACTION ON DELETE NO ACTION,
 PRIMARY KEY (Student_id,teacher_id)
 );
+ALTER TABLE Student ADD CONSTRAINT fk_Student_teacher_teacher_id
+	FOREIGN KEY Student(teacher_id) REFERENCES teacher(id) ON UPDATE CASCADE ON DELETE NO ACTION;
